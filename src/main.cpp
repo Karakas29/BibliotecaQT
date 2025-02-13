@@ -1,10 +1,10 @@
 // main.cpp
 #include <iostream>
-#include "Libro.h"
-#include "Film.h"
-#include "Musica.h"
-#include "Podcast.h"
-#include "Giornale.h"
+#include "include/Libro.h"
+#include "include/Film.h"
+#include "include/Musica.h"
+#include "include/Podcast.h"
+#include "include/Giornale.h"
 
 int main() {
     Libro libro(1, "Il Nome della Rosa", 1980, "Umberto Eco", "Bompiani", 512);
@@ -21,3 +21,4 @@ int main() {
 
     return 0;
 }
+
