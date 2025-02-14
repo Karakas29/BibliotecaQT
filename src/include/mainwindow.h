@@ -1,27 +1,33 @@
-// mainwindow.h
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ui_mainwindow.h"
+#include <QTableView>
+#include <QStandardItemModel>
 
-namespace Ui {
-    class MainWindow;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void on_addButton_clicked();
-    void on_removeButton_clicked();
+    void addMedia();
+    void removeMedia();
+    void loadFromJson();
+    void saveToJson();
 
 private:
     Ui::MainWindow *ui;
+    QTableView *tableView;
+    QStandardItemModel *model;
+    void setupUI();
+    void populateTable();
 };
 
 #endif // MAINWINDOW_H

@@ -1,4 +1,4 @@
-QT += core gui
+QT += widgets
 CONFIG += c++17
 SOURCES += src/main.cpp src/mainwindow.cpp
 HEADERS += src/include/mainwindow.h

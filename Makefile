@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++1z -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++
+INCPATH       = -I. -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = BibliotecaQt1.0.0
 DISTDIR = /home/student/Desktop/BibliotecaQT/build/obj/BibliotecaQt1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath-link,/usr/lib/x86_64-linux-gnu
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt6Widgets.so /usr/lib/x86_64-linux-gnu/libQt6Gui.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Core.so -lpthread -lGLX -lOpenGL   
+LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt6Gui.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Core.so -lpthread -lGLX -lOpenGL   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -53,9 +53,10 @@ OBJECTS_DIR   = build/obj/
 ####### Files
 
 SOURCES       = src/main.cpp \
-		src/mainwindow.cpp 
+		src/mainwindow.cpp moc_mainwindow.cpp
 OBJECTS       = build/obj/main.o \
-		build/obj/mainwindow.o
+		build/obj/mainwindow.o \
+		build/obj/moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -117,7 +118,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/opengl.prf \
-		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/file_copies.prf \
@@ -135,7 +135,7 @@ TARGET        = build/release/BibliotecaQt
 first: all
 ####### Build rules
 
-build/release/BibliotecaQt: ui_mainwindow.h $(OBJECTS)  
+build/release/BibliotecaQt:  $(OBJECTS)  
 	@test -d build/release/ || mkdir -p build/release/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -200,7 +200,6 @@ Makefile: BibliotecaQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/opengl.prf \
-		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/file_copies.prf \
@@ -209,7 +208,6 @@ Makefile: BibliotecaQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
 		BibliotecaQt.pro \
-		/usr/lib/x86_64-linux-gnu/libQt6Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Core.prl
 	$(QMAKE) -o Makefile BibliotecaQt.pro
@@ -274,7 +272,6 @@ Makefile: BibliotecaQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/resources.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/moc.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/opengl.prf:
-/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/uic.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/unix/thread.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qmake_use.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/file_copies.prf:
@@ -283,7 +280,6 @@ Makefile: BibliotecaQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf:
 BibliotecaQt.pro:
-/usr/lib/x86_64-linux-gnu/libQt6Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Core.prl:
 qmake: FORCE
@@ -303,7 +299,6 @@ distdir: FORCE
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents src/include/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents src/main.cpp src/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -335,26 +330,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_mainwindow.cpp
+moc_mainwindow.cpp: src/include/mainwindow.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/student/Desktop/BibliotecaQT/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/student/Desktop/BibliotecaQT -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/include/mainwindow.h -o moc_mainwindow.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
-compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ui/mainwindow.ui \
-		/usr/lib/qt6/libexec/uic
-	/usr/lib/qt6/libexec/uic ui/mainwindow.ui -o ui_mainwindow.h
-
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -363,11 +357,15 @@ build/obj/main.o: src/main.cpp src/include/Libro.h \
 		src/include/Film.h \
 		src/include/Musica.h \
 		src/include/Podcast.h \
-		src/include/Giornale.h
+		src/include/Giornale.h \
+		src/include/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/mainwindow.o: src/mainwindow.cpp src/include/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/mainwindow.o src/mainwindow.cpp
+
+build/obj/moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 
