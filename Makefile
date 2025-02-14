@@ -126,7 +126,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
-		BibliotecaQt.pro src/include/mainwindow.h src/main.cpp \
+		BibliotecaQt.pro src/include/mainwindow.h \
+		src/include/Media.h \
+		src/include/Film.h \
+		src/include/Giornale.h \
+		src/include/Libro.h \
+		src/include/Musica.h \
+		src/include/Podcast.h src/main.cpp \
 		src/mainwindow.cpp
 QMAKE_TARGET  = BibliotecaQt
 DESTDIR       = build/release/
@@ -302,7 +308,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/include/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/include/mainwindow.h src/include/Media.h src/include/Film.h src/include/Giornale.h src/include/Libro.h src/include/Musica.h src/include/Podcast.h $(DISTDIR)/
 	$(COPY_FILE) --parents src/main.cpp src/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
