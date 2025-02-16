@@ -1,0 +1,37 @@
+{
+  "books": [
+    {"id": 7823145, "type": "book", "title": "1984", "author": "George Orwell", "editor": "Secker & Warburg", "year": 1949, "pages": 328, "image": "https://example.com/images/1984.jpg"},
+    {"id": 3948721, "type": "book", "title": "Il nome della rosa", "author": "Umberto Eco", "editor": "Bompiani", "year": 1980, "pages": 512, "image": "https://example.com/images/il_nome_della_rosa.jpg"},
+    {"id": 6728391, "type": "book", "title": "Don Chisciotte", "author": "Miguel de Cervantes", "editor": "Francisco de Robles", "year": 1605, "pages": 863, "image": "https://example.com/images/don_chisciotte.jpg"},
+    {"id": 9823746, "type": "book", "title": "Orgoglio e Pregiudizio", "author": "Jane Austen", "editor": "T. Egerton", "year": 1813, "pages": 432, "image": "https://example.com/images/orgoglio_pregiudizio.jpg"},
+    {"id": 9283746, "type": "book", "title": "Il Signore degli Anelli", "author": "J.R.R. Tolkien", "editor": "Allen & Unwin", "year": 1954, "pages": 1216, "image": "https://example.com/images/signore_degli_anelli.jpg"}
+  ],
+  "movies": [
+    {"id": 5728493, "type": "movie", "title": "Inception", "director": "Christopher Nolan", "producer": "Emma Thomas", "year": 2010, "duration": 148, "image": "https://example.com/images/inception.jpg"},
+    {"id": 9847321, "type": "movie", "title": "Matrix", "director": "Lana e Lilly Wachowski", "producer": "Joel Silver", "year": 1999, "duration": 136, "image": "https://example.com/images/matrix.jpg"},
+    {"id": 6283746, "type": "movie", "title": "Interstellar", "director": "Christopher Nolan", "producer": "Emma Thomas", "year": 2014, "duration": 169, "image": "https://example.com/images/interstellar.jpg"},
+    {"id": 1293847, "type": "movie", "title": "Il Padrino", "director": "Francis Ford Coppola", "producer": "Albert S. Ruddy", "year": 1972, "duration": 175, "image": "https://example.com/images/il_padrino.jpg"},
+    {"id": 4382917, "type": "movie", "title": "Pulp Fiction", "director": "Quentin Tarantino", "producer": "Lawrence Bender", "year": 1994, "duration": 154, "image": "https://example.com/images/pulp_fiction.jpg"}
+  ],
+  "music": [
+    {"id": 2389471, "type": "music", "title": "Bohemian Rhapsody", "artist": "Queen", "album": "A Night at the Opera", "year": 1975, "duration": 354, "image": "https://example.com/images/bohemian_rhapsody.jpg"},
+    {"id": 6723948, "type": "music", "title": "Hotel California", "artist": "Eagles", "album": "Hotel California", "year": 1976, "duration": 391, "image": "https://example.com/images/hotel_california.jpg"},
+    {"id": 7283946, "type": "music", "title": "Billie Jean", "artist": "Michael Jackson", "album": "Thriller", "year": 1983, "duration": 293, "image": "https://example.com/images/billie_jean.jpg"},
+    {"id": 5837294, "type": "music", "title": "Imagine", "artist": "John Lennon", "album": "Imagine", "year": 1971, "duration": 183, "image": "https://example.com/images/imagine.jpg"},
+    {"id": 8392741, "type": "music", "title": "Like a Rolling Stone", "artist": "Bob Dylan", "album": "Highway 61 Revisited", "year": 1965, "duration": 370, "image": "https://example.com/images/like_a_rolling_stone.jpg"}
+  ],
+  "podcasts": [
+    {"id": 4738291, "type": "podcast", "title": "The Daily", "host": "The New York Times", "network": "The New York Times", "year": 2017, "episodes": 1000, "image": "https://example.com/images/the_daily.jpg"},
+    {"id": 9283746, "type": "podcast", "title": "Reply All", "host": "Gimlet Media", "network": "Spotify", "year": 2014, "episodes": 200, "image": "https://example.com/images/reply_all.jpg"},
+    {"id": 5728394, "type": "podcast", "title": "Stuff You Should Know", "host": "iHeartRadio", "network": "iHeartRadio", "year": 2008, "episodes": 1500, "image": "https://example.com/images/stuff_you_should_know.jpg"},
+    {"id": 3847291, "type": "podcast", "title": "TED Talks Daily", "host": "TED", "network": "TED", "year": 2016, "episodes": 800, "image": "https://example.com/images/ted_talks_daily.jpg"},
+    {"id": 5839274, "type": "podcast", "title": "Hardcore History", "host": "Dan Carlin", "network": "Independent", "year": 2006, "episodes": 70, "image": "https://example.com/images/hardcore_history.jpg"}
+  ],
+  "newspapers": [
+    {"id": 9834721, "type": "newspaper", "title": "The Guardian", "country": "UK", "year": 1821, "language": "English", "circulation": 1000000, "image": "https://example.com/images/the_guardian.jpg"},
+    {"id": 5628394, "type": "newspaper", "title": "The New York Times", "country": "USA", "year": 1851, "language": "English", "circulation": 1500000, "image": "https://example.com/images/ny_times.jpg"},
+    {"id": 4827391, "type": "newspaper", "title": "Le Monde", "country": "France", "year": 1944, "language": "French", "circulation": 320000, "image": "https://example.com/images/le_monde.jpg"},
+    {"id": 9283741, "type": "newspaper", "title": "El País", "country": "Spain", "year": 1976, "language": "Spanish", "circulation": 400000, "image": "https://example.com/images/el_pais.jpg"},
+    {"id": 7391824, "type": "newspaper", "title": "Corriere della Sera", "country": "Italy", "year": 1876, "language": "Italian", "circulation": 300000, "image": "https://example.com/images/corriere_della_sera.jpg"}
+  ]
+}
