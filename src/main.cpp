@@ -5,7 +5,7 @@
 #include "include/Musica.h"
 #include "include/Podcast.h"
 #include "include/Giornale.h"
-#include <QQtWidgets/Application>
+#include <QApplication>
 #include "include/mainwindow.h"
 
 int main(int argc, char *argv[]) {

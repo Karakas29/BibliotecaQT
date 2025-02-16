@@ -8,6 +8,8 @@
 #include <QJsonObject>
 #include <QFile>
 #include <QMessageBox>
+#include <QStandardItemModel>
+#include <QTableView>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -20,36 +22,47 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::setupUI() {
+    // Crea il widget centrale
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(centralWidget);
 
+    // Crea la tabella
     tableView = new QTableView(this);
     model = new QStandardItemModel(0, 4, this); // 4 colonne per ID, Titolo, Tipo, Anno
     model->setHorizontalHeaderLabels({"ID", "Titolo", "Tipo", "Anno"});
     tableView->setModel(model);
 
+    // Crea i pulsanti
     QPushButton *btnAdd = new QPushButton("Aggiungi Media", this);
     QPushButton *btnRemove = new QPushButton("Rimuovi Selezionato", this);
     QPushButton *btnLoad = new QPushButton("Carica JSON", this);
     QPushButton *btnSave = new QPushButton("Salva JSON", this);
 
+    // Aggiungi i widget al layout
     layout->addWidget(tableView);
     layout->addWidget(btnAdd);
     layout->addWidget(btnRemove);
     layout->addWidget(btnLoad);
     layout->addWidget(btnSave);
 
+    // Collega i segnali ai slot
     connect(btnAdd, &QPushButton::clicked, this, &MainWindow::addMedia);
     connect(btnRemove, &QPushButton::clicked, this, &MainWindow::removeMedia);
     connect(btnLoad, &QPushButton::clicked, this, &MainWindow::loadFromJson);
     connect(btnSave, &QPushButton::clicked, this, &MainWindow::saveToJson);
 
+    // Imposta il widget centrale
     setCentralWidget(centralWidget);
 }
 
 void MainWindow::addMedia() {
     int row = model->rowCount();
     model->insertRow(row);
+
+    // Imposta dei valori predefiniti per il nuovo media (opzionale)
+    model->setData(model->index(row, 1), "Nuovo Titolo");
+    model->setData(model->index(row, 2), "Tipo di Media");
+    model->setData(model->index(row, 3), 2023);
 }
 
 void MainWindow::removeMedia() {
@@ -76,7 +89,7 @@ void MainWindow::loadFromJson() {
     QJsonObject root = doc.object();
     QJsonArray books = root["books"].toArray();
 
-    model->setRowCount(0); // Svuotiamo la tabella
+    model->setRowCount(0); // Svuota la tabella
 
     for (const QJsonValue &value : books) {
         QJsonObject obj = value.toObject();
